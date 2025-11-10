@@ -34,7 +34,7 @@ export default class Cl_vFederacion extends Cl_vGeneral{
         let nombre = prompt ("Ingrese el nombre del equipo:");
         if (!nombre) return;
         let pais = prompt ("Ingrese el pais:");
-        if(!pais) return;
+        if(!pais || +pais) return;
         let cantParticipantes = prompt ("Ingrese la cantidad de participantes del equipo:");
         if(!cantParticipantes) return;
         this.controlador!.agregarEquipo({

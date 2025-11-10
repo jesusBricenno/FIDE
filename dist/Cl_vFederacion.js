@@ -30,7 +30,7 @@ export default class Cl_vFederacion extends Cl_vGeneral {
         if (!nombre)
             return;
         let pais = prompt("Ingrese el pais:");
-        if (!pais)
+        if (!pais || +pais)
             return;
         let cantParticipantes = prompt("Ingrese la cantidad de participantes del equipo:");
         if (!cantParticipantes)
