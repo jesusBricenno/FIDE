@@ -8,6 +8,7 @@ País de Origen: La nación que representa el equipo.
 Número de Participantes: La cantidad total de jugadores inscritos en ese equipo.
 */
 import Cl_controlador from "./Cl_controlador.js";
+import Cl_mEquipo from "./Cl_mEquipo.js";
 import Cl_mFederacion from "./Cl_mFederacion.js";
 import Cl_vFederacion from "./Cl_vFederacion.js";
 export default class Cl_index {
@@ -15,6 +16,19 @@ export default class Cl_index {
     vista;
     constructor() {
         this.modelo = new Cl_mFederacion();
+        let LSequipos = localStorage.getItem("equipos"); // [{}, {}, {}]
+        if (LSequipos) {
+            let equiposDT = JSON.parse(LSequipos);
+            equiposDT.forEach((equipo) => {
+                this.modelo.agregarEquipo({
+                    equipo: new Cl_mEquipo(equipo),
+                    callback: (error) => {
+                        if (error)
+                            alert(error);
+                    }
+                });
+            });
+        }
         this.vista = new Cl_vFederacion();
         let controlador = new Cl_controlador(this.modelo, this.vista);
         this.vista.controlador = controlador;

@@ -13,6 +13,7 @@ export default class Cl_mFederacion {
             return;
         }
         this.equipos.push(equipo);
+        localStorage.setItem("equipos", JSON.stringify(this.listar()));
         callback(false);
     }
     listar() {

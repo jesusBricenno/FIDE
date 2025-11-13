@@ -23,8 +23,8 @@ export default class Cl_mFederacion {
         callback(`Ya existe un equipo que es de ${equipo.pais}`)
         return;
     }
-
     this.equipos.push(equipo);
+    localStorage.setItem("equipos", JSON.stringify(this.listar()));
     callback(false);
  }
  listar(): iEquipo[]{
